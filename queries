@@ -1,0 +1,80 @@
+# Welcome!
+#
+# This is an in-browser tool for writing, validating, and
+# testing GraphQL queries.
+#
+# An example query named "GetPost" might look like:
+#
+#     query GetPost {
+#       singlePost(id: 123) {
+#         id
+#         title
+#       }
+#     }
+#
+# An example mutation named "PutPost" might look like:
+#
+#     mutation PutPost {
+#       putPost(id: 123, title: "Hello, world!") {
+#         id
+#         title
+#       }
+#     }
+#
+# Keyboard shortcuts:
+#
+#  Prettify Query:  Ctrl+Shift+P (also removes comments)
+#       Run Query:  Ctrl+Enter   (or press the play button above)
+#   Auto Complete:  Ctrl+Space   (or just start typing)
+#
+
+mutation addPost {
+    addPost(
+        id: 6
+        author: "Author6"
+        title: "Sixth book"
+        url: "https://www.amazon.com/"
+        content: "This is the book is a tutorial for using GraphQL with AWS AppSync."
+    ) {
+        id
+        author
+        title
+        content
+        url
+        ups
+        downs
+    }
+}
+
+query GetPost{
+    getPost(id: "19") {
+        id
+        author
+        title
+        content
+        url
+        ups
+        downs
+    }
+}
+
+query GetAllPosts{
+    allPosts {   
+        id
+        author
+        title
+        content
+        url
+        ups
+        downs
+        relatedPosts {  
+            id
+            title
+            relatedPosts {
+                id
+                title
+                author
+            }
+        }
+    }
+}
